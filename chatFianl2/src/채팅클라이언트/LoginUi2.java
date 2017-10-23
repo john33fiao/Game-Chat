@@ -1,4 +1,4 @@
-package Ã¤ÆÃÅ¬¶óÀÌ¾ğÆ®;
+package ì±„íŒ…í´ë¼ì´ì–¸íŠ¸;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -33,12 +33,12 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 
 	private JMenuItem bgmStart=new JMenuItem("Bgm On");
 	private JMenuItem bgmStop=new JMenuItem("Bgm off");
-	private JMenuItem µµ¿ò¸»=new JMenuItem("µµ¿ò¸»");
+	private JMenuItem ë„ì›€ë§=new JMenuItem("ë„ì›€ë§");
 	
 	private JMenuBar mb= new JMenuBar();
 
 	private JMenu muBan = new JMenu("Ban");
-	private JMenuItem ban = new JMenuItem("À¯Àú Ãß¹æ");
+	private JMenuItem ban = new JMenuItem("ìœ ì € ì¶”ë°©");
 	
 	private JMenu muBgm = new JMenu("Bgm");
 
@@ -69,7 +69,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 		
 		muBan.addActionListener(this);
 		muOther.addActionListener(this);
-		µµ¿ò¸».addActionListener(this);
+		ë„ì›€ë§.addActionListener(this);
 		muBgm.addActionListener(this);
 		
 		bgmStart.addActionListener(this);
@@ -78,7 +78,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 		
 	}
 	Toolkit kit =Toolkit.getDefaultToolkit();
-	Image img2=kit.getImage(LoginUi1.class.getResource("/³ª¹«.jpg"));
+	Image img2=kit.getImage(LoginUi1.class.getResource("/ë‚˜ë¬´.jpg"));
 
 	public void Main_init(String nickName2,String channel2){
 		
@@ -93,7 +93,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 				
 			}
 		};
-		this.setTitle(channel2+" Ã¤ÆÃ¹æ / "+"³ª: "+nickName);
+		this.setTitle(channel2+" ì±„íŒ…ë°© / "+"ë‚˜: "+nickName);
 		jp = new JPanel();
 
 		user_list.setBackground(new Color(255,255,255));
@@ -178,8 +178,8 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 		mb.setFont(new Font("Bitstream Vera Sans Mono",Font.BOLD,12));
 		mb.add(muOther);
 		
-		µµ¿ò¸».setFont(new Font("Bitstream Vera Sans Mono",Font.BOLD,12));
-		muOther.add(µµ¿ò¸»);
+		ë„ì›€ë§.setFont(new Font("Bitstream Vera Sans Mono",Font.BOLD,12));
+		muOther.add(ë„ì›€ë§);
 		
 
 		jp.add(mb);
@@ -191,7 +191,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 		jp.add(mlb);
 		
 		Toolkit kit =Toolkit.getDefaultToolkit();
-		Image img=kit.getImage(LoginUi1.class.getResource("/³ª¹«.jpg"));
+		Image img=kit.getImage(LoginUi1.class.getResource("/ë‚˜ë¬´.jpg"));
 		Icon icon2=new ImageIcon(img);
 		JLabel ijlb=new JLabel(icon2);
 		ijlb.setBounds(0, 0, 445, 540);
@@ -233,11 +233,11 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 	
 	public void appendMsg(String msg) {
 
-		if(msg.contains(":±Ó¼Ó¸» to ")){
-			if(msg.contains(":±Ó¼Ó¸» to "+meNick)){
-				msg=msg.replaceFirst(":±Ó¼Ó¸» to "+meNick+">", "ÀÇ ±Ó¼Ó¸» : \n");
-			}else if(msg.contains(meNick+":±Ó¼Ó¸» to ")){
-				msg=msg.substring(msg.indexOf("to ")+3, msg.lastIndexOf(">"))+"¿¡°Ô ±Ó¼Ó¸»\n"+msg.substring(msg.indexOf(">")+1, msg.lastIndexOf(")")+1)+"\n";
+		if(msg.contains(":ê·“ì†ë§ to ")){
+			if(msg.contains(":ê·“ì†ë§ to "+meNick)){
+				msg=msg.replaceFirst(":ê·“ì†ë§ to "+meNick+">", "ì˜ ê·“ì†ë§ : \n");
+			}else if(msg.contains(meNick+":ê·“ì†ë§ to ")){
+				msg=msg.substring(msg.indexOf("to ")+3, msg.lastIndexOf(">"))+"ì—ê²Œ ê·“ì†ë§\n"+msg.substring(msg.indexOf(">")+1, msg.lastIndexOf(")")+1)+"\n";
 			}else{
 				msg="";
 			}
@@ -247,53 +247,53 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 	      }
 		if(msg.startsWith("!@#$%[")){
 			if(beforeLogin){
-				meNick=msg.substring(msg.indexOf("³Ê´Â@@")+4, msg.length());
+				meNick=msg.substring(msg.indexOf("ë„ˆëŠ”@@")+4, msg.length());
 				beforeLogin=false;
 			}
 			msg=msg.substring(6, msg.lastIndexOf("]!@#$%^"));
 			usL=msg.split(", ");
-			setTitle(channel+"Ã¤³Î / ³ª : "+meNick);
-			mlb.setText(channel+" Ã¤³ÎÀÔ´Ï´Ù");
+			setTitle(channel+"ì±„ë„ / ë‚˜ : "+meNick);
+			mlb.setText(channel+" ì±„ë„ì…ë‹ˆë‹¤");
 			user_list.removeAll();
-			userTotal=0;		// Ãß°¡µÈ ºÎºĞÀÔ´Ï´Ù 0914
+			userTotal=0;		// ì¶”ê°€ëœ ë¶€ë¶„ì…ë‹ˆë‹¤ 0914
 			for (int i = 0; i < usL.length; i++) {
 				user_list.add(usL[i]);
 				userTotal++;
 			}
-			setTitle(channel+"Ã¤³Î / ³ª : "+meNick+" / ÇöÀç "+userTotal+"¸í Á¢¼ÓÁß");	
+			setTitle(channel+"ì±„ë„ / ë‚˜ : "+meNick+" / í˜„ì¬ "+userTotal+"ëª… ì ‘ì†ì¤‘");	
 			msg="";
 		}
-		if(msg.startsWith("%%%^")){	// ¹æ ³ª°¡±â ±â´É
+		if(msg.startsWith("%%%^")){	// ë°© ë‚˜ê°€ê¸° ê¸°ëŠ¥
 			msg="";
 		}
 		if(msg.startsWith(meNick)){
-		msg = msg.replaceFirst(meNick, "³ª");
+		msg = msg.replaceFirst(meNick, "ë‚˜");
 		}
 		
-		if(msg.startsWith("&&*Ãß¹æ")){	
+		if(msg.startsWith("&&*ì¶”ë°©")){	
 			if(msg.contains(meNick)){
 				msg="";
 			}else{
-				msg = msg.replace("&&*Ãß¹æ", "");
-				int btf = JOptionPane.showConfirmDialog(null, msg+"À¯Àú Ãß¹æ¿¡ µ¿ÀÇÇÏ½Ê´Ï±î?", msg+"À¯Àú Ãß¹æ ÅõÇ¥", 
+				msg = msg.replace("&&*ì¶”ë°©", "");
+				int btf = JOptionPane.showConfirmDialog(null, msg+"ìœ ì € ì¶”ë°©ì— ë™ì˜í•˜ì‹­ë‹ˆê¹Œ?", msg+"ìœ ì € ì¶”ë°© íˆ¬í‘œ", 
 						JOptionPane.YES_NO_OPTION);
 				if(btf==0){
-					userClient.sendMessage("Ãß¹æµ¿ÀÇ"+msg);
+					userClient.sendMessage("ì¶”ë°©ë™ì˜"+msg);
 				}else if(btf==1){
-					userClient.sendMessage("Ãß¹æ¹İ´ë"+msg);
+					userClient.sendMessage("ì¶”ë°©ë°˜ëŒ€"+msg);
 				}
 				msg="";
 			}
 		}
-		if(msg.startsWith("Ã¤ÆÃ¹æ ±¸¼º¿øÀÌ 2¸í ÀÌÇÏÀÏ °æ¿ì")){
+		if(msg.startsWith("ì±„íŒ…ë°© êµ¬ì„±ì›ì´ 2ëª… ì´í•˜ì¼ ê²½ìš°")){
 			JOptionPane.showMessageDialog(null, msg);
 			msg="";
 		}
 		
-		//----------------------- Àü¼Û½ÃÀÛ
+		//----------------------- ì „ì†¡ì‹œì‘
 		  Chat_area.append(msg);
 	      Chat_area.setCaretPosition(Chat_area.getDocument().getLength());
-	    // ---------------------- Àü¼Û¿Ï·á
+	    // ---------------------- ì „ì†¡ì™„ë£Œ
 	}
 	
 	String usL[]; //
@@ -301,7 +301,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ClientThread ct ;
-		if(e.getSource()==ban){	// ¿©±â Ãß°¡ÇÕ´Ï´Ù 0914
+		if(e.getSource()==ban){	// ì—¬ê¸° ì¶”ê°€í•©ë‹ˆë‹¤ 0914
 			String banUser;
 			String ULT[] = new String[usL.length-1];
 			for (int i = 0; i < usL.length; i++) {
@@ -314,22 +314,22 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 					}
 				}
 			}
-			banUser = (String) JOptionPane.showInputDialog(null,"Ãß¹æÇÏ°í½ÍÀ¸½Å À¯Àú¸¦ ¼±ÅÃÇØÁÖ½Ã¸é ÅõÇ¥°¡ ½ÃÀÛµË´Ï´Ù", "À¯Àú Ãß¹æ",
+			banUser = (String) JOptionPane.showInputDialog(null,"ì¶”ë°©í•˜ê³ ì‹¶ìœ¼ì‹  ìœ ì €ë¥¼ ì„ íƒí•´ì£¼ì‹œë©´ íˆ¬í‘œê°€ ì‹œì‘ë©ë‹ˆë‹¤", "ìœ ì € ì¶”ë°©",
 					JOptionPane.QUESTION_MESSAGE,null, ULT, null);
 			if(banUser!=null && banUser!=meNick){
-				userClient.sendMessage("&&*Ãß¹æÅõÇ¥½ÃÀÛ"+banUser);
+				userClient.sendMessage("&&*ì¶”ë°©íˆ¬í‘œì‹œì‘"+banUser);
 			}else if(banUser==meNick){
 			}
 		}
-		if(e.getSource()==µµ¿ò¸»){
-			JOptionPane.showMessageDialog(null, "UserList¿¡¼­ À¯Àú ¼±ÅÃÈÄ Whisper Å¬¸¯ÇÏ¸é ±Ó¼Ó¸»ÀÌ °¡´ÉÇÕ´Ï´Ù.\n"
-				+ "RoomList¿¡¼­ Ã¤³Î ¼±ÅÃÈÄ RoomJoin Å¬¸¯½Ã ÇØ´ç ¹æÀ¸·Î ÀÔÀåÇÕ´Ï´Ù.");
+		if(e.getSource()==ë„ì›€ë§){
+			JOptionPane.showMessageDialog(null, "UserListì—ì„œ ìœ ì € ì„ íƒí›„ Whisper í´ë¦­í•˜ë©´ ê·“ì†ë§ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n"
+				+ "RoomListì—ì„œ ì±„ë„ ì„ íƒí›„ RoomJoin í´ë¦­ì‹œ í•´ë‹¹ ë°©ìœ¼ë¡œ ì…ì¥í•©ë‹ˆë‹¤.");
 		}
 		if(e.getSource()==bgmStart){setMusic();bgmStart.setEnabled(false);bgmStop.setEnabled(true);}
         if(e.getSource()==bgmStop){mainBgm.stop();bgmStart.setEnabled(true);bgmStop.setEnabled(false);}
 		
 		if(e.getSource()==note_btn){
-			msg_tf.setText("±Ó¼Ó¸» to "+user_list.getSelectedItem()+">");
+			msg_tf.setText("ê·“ì†ë§ to "+user_list.getSelectedItem()+">");
 		}else if(e.getSource()==joinroom_btn && room_list.getSelectedItem()!=null){	
 			channel=room_list.getSelectedItem();
 			mainBgm.stop();
@@ -337,7 +337,7 @@ public class LoginUi2 extends JFrame implements ActionListener,Serializable {
 			dispose();
 			ct=new ClientThread(meNick, channel);
 			ct.start();
-			userClient.sendMessage("%%%^"+meNick+"^%%%Àº ¹æÀ» ³ª°£´Ù");
+			userClient.sendMessage("%%%^"+meNick+"^%%%ì€ ë°©ì„ ë‚˜ê°„ë‹¤");
 		
 		}else if(e.getSource()==send_btn || e.getSource()==msg_tf){
 			if(msg_tf.getText().isEmpty()){	

@@ -1,4 +1,4 @@
-package Ã¤ÆÃ¼­¹ö;
+package ì±„íŒ…ì„œë²„;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -84,9 +84,9 @@ public class ServerClient {
 	public void setting() throws IOException {	
 		serverSocket=new ServerSocket(7777);
 			while (true) {
-				System.out.println("¼­¹ö ´ë±âÁß.");
+				System.out.println("ì„œë²„ ëŒ€ê¸°ì¤‘.");
 				socket = serverSocket.accept(); 
-				System.out.println(socket.getInetAddress() + "Á¢¼Ó");
+				System.out.println(socket.getInetAddress() + "ì ‘ì†");
 				Receiver receiver = new Receiver(socket);
 				receiver.start();
 			}
@@ -97,13 +97,13 @@ public class ServerClient {
 	}
 
 	public void addClient(String channel,String nick, DataOutputStream out) throws IOException {
-		sendMessage((nick + "´Ô²²¼­ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.\n"),channel);	// ¼­¿äÇÑ ¼öÁ¤
+		sendMessage((nick + "ë‹˜ê»˜ì„œ ì ‘ì†í•˜ì…¨ìŠµë‹ˆë‹¤.\n"),channel);	// ì„œìš”í•œ ìˆ˜ì •
 		gui.sendList(channel);
 		user_list.add(nick);
 		mainMap.get(channel).put(nick, out);
 	}
-	public void removeClient(String channel,String nick) {		// ¼­¿äÇÑ ¼öÁ¤
-		sendMessage(nick + "´Ô²²¼­ ¹æÀ» ³ª°¡¼Ì½À´Ï´Ù.\n",channel);
+	public void removeClient(String channel,String nick) {		// ì„œìš”í•œ ìˆ˜ì •
+		sendMessage(nick + "ë‹˜ê»˜ì„œ ë°©ì„ ë‚˜ê°€ì…¨ìŠµë‹ˆë‹¤.\n",channel);
 		mainMap.get(channel).remove(nick);
 		gui.removeList(channel);
 		String usL;
@@ -123,7 +123,7 @@ public class ServerClient {
 			} 
 		}
 	}
-	public void sendMessage2(String msg,String tmp[]) { //msg = ¿î¿µÀÚÀÇ ¸»ÀÌ°í , tmp[] ´Â ÇöÀç¸¸µé¾îÁø Ã¤³Î 
+	public void sendMessage2(String msg,String tmp[]) { //msg = ìš´ì˜ìì˜ ë§ì´ê³  , tmp[] ëŠ” í˜„ì¬ë§Œë“¤ì–´ì§„ ì±„ë„ 
 		for(int i=0;i<tmp.length;i++){
 			setChannel.add(tmp[i]);
 		}
@@ -164,7 +164,7 @@ public class ServerClient {
 			try {
 				sleep(1000);
 				String usL;
-				usL = "!@#$%"+mainMap.get(st[0]).keySet().toString()+"!@#$%^\n"+"³Ê´Â@@"+st[1];
+				usL = "!@#$%"+mainMap.get(st[0]).keySet().toString()+"!@#$%^\n"+"ë„ˆëŠ”@@"+st[1];
 				sendMessage(usL, st[0]);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -178,43 +178,43 @@ public class ServerClient {
 						String movingNick = msg.substring(4, msg.indexOf("^%%%"));
 						removeClient(st[0], st[1]);
 					}
-					if(msg.startsWith("&&*Ãß¹æÅõÇ¥½ÃÀÛ")){		// ¼öÁ¤Çß½À´Ï´Ù 0914
-						// Ãß¹æ °ÇÀÇ ¹ŞÀ½
+					if(msg.startsWith("&&*ì¶”ë°©íˆ¬í‘œì‹œì‘")){		// ìˆ˜ì •í–ˆìŠµë‹ˆë‹¤ 0914
+						// ì¶”ë°© ê±´ì˜ ë°›ìŒ
 						if(mainMap.get(st[0]).size()<=2){
-							mainMap.get(st[0]).get(st[1]).writeUTF("Ã¤ÆÃ¹æ ±¸¼º¿øÀÌ 2¸í ÀÌÇÏÀÏ °æ¿ì Ãß¹æÅõÇ¥°¡ ºÒ°¡´ÉÇÕ´Ï´Ù\n");
+							mainMap.get(st[0]).get(st[1]).writeUTF("ì±„íŒ…ë°© êµ¬ì„±ì›ì´ 2ëª… ì´í•˜ì¼ ê²½ìš° ì¶”ë°©íˆ¬í‘œê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤\n");
 							msg="";
-						}else if(mainVoteMap.get(st[0])){	// ÀÌ¹Ì ÅõÇ¥°¡ ÁøÇàÁßÀÏ °æ¿ì
-							mainMap.get(st[0]).get(st[1]).writeUTF("ÀÌ¹Ì ´Ù¸¥ ÅõÇ¥°¡ ÁøÇàÁßÀÔ´Ï´Ù\n");
+						}else if(mainVoteMap.get(st[0])){	// ì´ë¯¸ íˆ¬í‘œê°€ ì§„í–‰ì¤‘ì¼ ê²½ìš°
+							mainMap.get(st[0]).get(st[1]).writeUTF("ì´ë¯¸ ë‹¤ë¥¸ íˆ¬í‘œê°€ ì§„í–‰ì¤‘ì…ë‹ˆë‹¤\n");
 							msg="";
 						}else{
-							mainVoteMap.put(st[0],true);	// ÅõÇ¥½ÃÀÛ
-							mainVoteCount.put(st[0], 0);	// Âù¼º 0
-							mainVoteDisagree.put(st[0], 0);	// ¹İ´ë 0
+							mainVoteMap.put(st[0],true);	// íˆ¬í‘œì‹œì‘
+							mainVoteCount.put(st[0], 0);	// ì°¬ì„± 0
+							mainVoteDisagree.put(st[0], 0);	// ë°˜ëŒ€ 0
 						}
 					}
-					if(msg.startsWith("Ãß¹æµ¿ÀÇ")){
-						msg=msg.replace("Ãß¹æµ¿ÀÇ", "");		// ¾ÆÀÌµğ¸¸ »Ì¾Æ³»°í
-						mainVoteCount.put(st[0], mainVoteCount.get(st[0])+1);	// µ¿ÀÇÇÑ »ç¶÷ ¼ıÀÚ ´Ã¸®°í
-						if((mainMap.get(st[0]).size()/2)<mainVoteCount.get(st[0])){	// Àı¹İ ÀÌ»óÀÌ µ¿ÀÇÇÏ¸é
-							msg=msg.replace("ÅõÇ¥½ÃÀÛ", "");
-							mainMap.get(st[0]).get(msg).writeUTF("%%^^³Ê´Â Á» ³ª°¡¾ß°Ú´Ù");	// ¦i¾Æ³»°í
-//							removeClient(st[0], msg);										// ±× À¯Àú ¸ñ·Ï¿¡¼­ Áö¿î´Ù
-							mainVoteMap.put(st[0], false);	// ÅõÇ¥ ÁøÇàÁßÀÌÁö ¾ÊÀº °ÍÀ¸·Î
-							mainVoteCount.put(st[0], 0);	// µ¿ÀÇÀÚ ¼ıÀÚ 0À¸·Î
-							mainVoteDisagree.put(st[0], 0);	// ¹İ´ëÀÚ ¼ıÀÚ 0À¸·Î
+					if(msg.startsWith("ì¶”ë°©ë™ì˜")){
+						msg=msg.replace("ì¶”ë°©ë™ì˜", "");		// ì•„ì´ë””ë§Œ ë½‘ì•„ë‚´ê³ 
+						mainVoteCount.put(st[0], mainVoteCount.get(st[0])+1);	// ë™ì˜í•œ ì‚¬ëŒ ìˆ«ì ëŠ˜ë¦¬ê³ 
+						if((mainMap.get(st[0]).size()/2)<mainVoteCount.get(st[0])){	// ì ˆë°˜ ì´ìƒì´ ë™ì˜í•˜ë©´
+							msg=msg.replace("íˆ¬í‘œì‹œì‘", "");
+							mainMap.get(st[0]).get(msg).writeUTF("%%^^ë„ˆëŠ” ì¢€ ë‚˜ê°€ì•¼ê² ë‹¤");	// ì«’ì•„ë‚´ê³ 
+//							removeClient(st[0], msg);										// ê·¸ ìœ ì € ëª©ë¡ì—ì„œ ì§€ìš´ë‹¤
+							mainVoteMap.put(st[0], false);	// íˆ¬í‘œ ì§„í–‰ì¤‘ì´ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ
+							mainVoteCount.put(st[0], 0);	// ë™ì˜ì ìˆ«ì 0ìœ¼ë¡œ
+							mainVoteDisagree.put(st[0], 0);	// ë°˜ëŒ€ì ìˆ«ì 0ìœ¼ë¡œ
 						}
-						if((mainVoteCount.get(st[0])+mainVoteDisagree.get(st[0])+1) == mainMap.get(st[0]).size()){ // ¸ğµÎ ÅõÇ¥Çß´Ù¸é
-							mainVoteMap.put(st[0], false);	// ÅõÇ¥ ÁøÇàÁßÀÌÁö ¾ÊÀº °ÍÀ¸·Î
-							mainVoteCount.put(st[0], 0);	// µ¿ÀÇÀÚ ¼ıÀÚ 0À¸·Î
-							mainVoteDisagree.put(st[0], 0);	// ¹İ´ëÀÚ ¼ıÀÚ 0À¸·Î
+						if((mainVoteCount.get(st[0])+mainVoteDisagree.get(st[0])+1) == mainMap.get(st[0]).size()){ // ëª¨ë‘ íˆ¬í‘œí–ˆë‹¤ë©´
+							mainVoteMap.put(st[0], false);	// íˆ¬í‘œ ì§„í–‰ì¤‘ì´ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ
+							mainVoteCount.put(st[0], 0);	// ë™ì˜ì ìˆ«ì 0ìœ¼ë¡œ
+							mainVoteDisagree.put(st[0], 0);	// ë°˜ëŒ€ì ìˆ«ì 0ìœ¼ë¡œ
 						}
 						msg = "";
-					}else if(msg.startsWith("Ãß¹æ¹İ´ë")){	// ¹İ´ë ¸Ş½ÃÁö¸¦ ¹ŞÀ¸¸é
-						mainVoteDisagree.put(st[0], mainVoteDisagree.get(st[0])+1);	// ¹İ´ëÇ¥ ´Ã¸®°í
-						if((mainVoteCount.get(st[0])+mainVoteDisagree.get(st[0])+1) == mainMap.get(st[0]).size()){ // ¸ğµÎ ÅõÇ¥Çß´Ù¸é
-							mainVoteMap.put(st[0], false);	// ÅõÇ¥ ÁøÇàÁßÀÌÁö ¾ÊÀº °ÍÀ¸·Î
-							mainVoteCount.put(st[0], 0);	// µ¿ÀÇÀÚ ¼ıÀÚ 0À¸·Î
-							mainVoteDisagree.put(st[0], 0);	// ¹İ´ëÀÚ ¼ıÀÚ 0À¸·Î
+					}else if(msg.startsWith("ì¶”ë°©ë°˜ëŒ€")){	// ë°˜ëŒ€ ë©”ì‹œì§€ë¥¼ ë°›ìœ¼ë©´
+						mainVoteDisagree.put(st[0], mainVoteDisagree.get(st[0])+1);	// ë°˜ëŒ€í‘œ ëŠ˜ë¦¬ê³ 
+						if((mainVoteCount.get(st[0])+mainVoteDisagree.get(st[0])+1) == mainMap.get(st[0]).size()){ // ëª¨ë‘ íˆ¬í‘œí–ˆë‹¤ë©´
+							mainVoteMap.put(st[0], false);	// íˆ¬í‘œ ì§„í–‰ì¤‘ì´ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ
+							mainVoteCount.put(st[0], 0);	// ë™ì˜ì ìˆ«ì 0ìœ¼ë¡œ
+							mainVoteDisagree.put(st[0], 0);	// ë°˜ëŒ€ì ìˆ«ì 0ìœ¼ë¡œ
 						}
 						msg="";
 					}

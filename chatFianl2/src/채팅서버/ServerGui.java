@@ -1,4 +1,4 @@
-package Ã¤ÆÃ¼­¹ö;
+package ì±„íŒ…ì„œë²„;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import Ã¤ÆÃÅ¬¶óÀÌ¾ğÆ®.LoginUi1;
+import ì±„íŒ…í´ë¼ì´ì–¸íŠ¸.LoginUi1;
 
 public class ServerGui extends JFrame implements ActionListener,Serializable{
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class ServerGui extends JFrame implements ActionListener,Serializable{
 	private ArrayList<String> alist=new ArrayList<String>();
 	public ServerGui() throws IOException {
 		
-		Image testimg = new ImageIcon(ServerGui.class.getResource("/³ª¹«2.jpg")).getImage();
+		Image testimg = new ImageIcon(ServerGui.class.getResource("/ë‚˜ë¬´2.jpg")).getImage();
 		jta= new JTextArea(){
 			{setOpaque(false);}
 			protected void paintComponent(java.awt.Graphics g) {
@@ -48,14 +48,14 @@ public class ServerGui extends JFrame implements ActionListener,Serializable{
 		add(jtf);
 		jtf.addActionListener(this);
 		Toolkit kit =Toolkit.getDefaultToolkit();
-		Image img2=kit.getImage(ServerGui.class.getResource("/³ª¹«.jpg"));
+		Image img2=kit.getImage(ServerGui.class.getResource("/ë‚˜ë¬´.jpg"));
 		
 		jl.setIcon(new ImageIcon(img2));
 		jl.setBounds(0, 0, 422, 519);
 		add(jl);
 		setVisible(true);
 
-		setTitle("¼­¹ö Å¬¶óÀÌ¾ğÆ®");
+		setTitle("ì„œë²„ í´ë¼ì´ì–¸íŠ¸");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 425, 545);
 	    setResizable(false);
@@ -71,7 +71,7 @@ public class ServerGui extends JFrame implements ActionListener,Serializable{
 		for(int i=0;i<alist.size();i++){
 			tmp[i]=alist.get(i);
 		}
-		String msg = "¿î¿µÀÚ : "+ jtf.getText() +"\n";
+		String msg = "ìš´ì˜ì : "+ jtf.getText() +"\n";
 		server.sendMessage2(msg,tmp);
 		jtf.setText("");
 	}
@@ -80,7 +80,7 @@ public class ServerGui extends JFrame implements ActionListener,Serializable{
 		if(msg.startsWith("%%%^")){
 			msg="";
 		}
-		if(msg.startsWith("&&*Ãß¹æÅõÇ¥½ÃÀÛ")){
+		if(msg.startsWith("&&*ì¶”ë°©íˆ¬í‘œì‹œì‘")){
 			msg="";
 		}
 		jta.append(msg);

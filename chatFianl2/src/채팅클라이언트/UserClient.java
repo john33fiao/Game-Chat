@@ -1,4 +1,4 @@
-package Ã¤ÆÃÅ¬¶óÀÌ¾ğÆ®;
+package ì±„íŒ…í´ë¼ì´ì–¸íŠ¸;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -31,19 +31,19 @@ public class UserClient {
 
 	public void UserClient() {
 		try {
-			socket = new Socket("203.236.209.202", 7777);
-			System.out.println("¼­¹ö ¿¬°áµÊ.");
+			socket = new Socket("localHost", 7777);
+			System.out.println("ì„œë²„ ì—°ê²°ë¨.");
 			
 			dos = new DataOutputStream(socket.getOutputStream());
 			dis = new DataInputStream(socket.getInputStream());
 			
 			dos.writeUTF(channel+" "+nickName);
-			System.out.println("Å¬¶óÀÌ¾ğÆ® : ´Ğ³×ÀÓ Àü¼Û¿Ï·á");
+			System.out.println("í´ë¼ì´ì–¸íŠ¸ : ë‹‰ë„¤ì„ ì „ì†¡ì™„ë£Œ");
 			while(dis!=null){
 				msg=dis.readUTF();
 				gui.appendMsg(msg);
-				if(msg.contains("%%^^³Ê´Â Á» ³ª°¡¾ß°Ú´Ù")){
-					JOptionPane.showMessageDialog(null, "³Ê °­Åğ");
+				if(msg.contains("%%^^ë„ˆëŠ” ì¢€ ë‚˜ê°€ì•¼ê² ë‹¤")){
+					JOptionPane.showMessageDialog(null, "ë„ˆ ê°•í‡´");
 					System.exit(0);
 				}
 			}

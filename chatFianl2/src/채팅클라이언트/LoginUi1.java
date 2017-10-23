@@ -1,4 +1,4 @@
-package Ã¤ÆÃÅ¬¶óÀÌ¾ğÆ®;
+package ì±„íŒ…í´ë¼ì´ì–¸íŠ¸;
 
 
 import java.awt.Color;
@@ -29,11 +29,11 @@ public class LoginUi1 extends JFrame implements ActionListener,Serializable {
 	private JTextField id_tf;
 	private InputStream IN;
 	private JButton login_btn = new JButton("Contact");
-	private Music loginBgm =new Music("¸ŞÀÎÅ×¸¶.mp3",true);
+	private Music loginBgm =new Music("ë©”ì¸í…Œë§ˆ.mp3",true);
 	private Toolkit kit =Toolkit.getDefaultToolkit();
 
-	private Image img3=kit.getImage(LoginUi1.class.getResource("/¹öÆ°.png"));
-	private Image img=kit.getImage(LoginUi1.class.getResource("/³ª¹«.jpg"));
+	private Image img3=kit.getImage(LoginUi1.class.getResource("/ë²„íŠ¼.png"));
+	private Image img=kit.getImage(LoginUi1.class.getResource("/ë‚˜ë¬´.jpg"));
 	private  Icon icon=new ImageIcon(img);
 	private  Icon icon3=new ImageIcon(img3);
 	private JButton bgm_off=new JButton(icon3);
@@ -48,7 +48,7 @@ public class LoginUi1 extends JFrame implements ActionListener,Serializable {
 	private void login_ui(){
 		
 		login_btn.addActionListener(this);
-		setTitle("GameChannelChatting");		// ¼­¿äÇÑ ¼öÁ¤ÇÔ
+		setTitle("GameChannelChatting");		// ì„œìš”í•œ ìˆ˜ì •í•¨
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 408);
@@ -79,7 +79,7 @@ public class LoginUi1 extends JFrame implements ActionListener,Serializable {
 		channel_list.add("MapleStory");
 		channel_list.add("Overwatch");
 		channel_list.add("TalesWeaver");
-		channel_list.add("Starcraft");			// ¿©±â ¼­¿äÇÑ ¼öÁ¤ÇÔ
+		channel_list.add("Starcraft");			// ì—¬ê¸° ì„œìš”í•œ ìˆ˜ì •í•¨
 		channel_list.setBounds(154, 50, 153, 100);
 		channel_list.setBackground(new Color(255, 255, 255));
 		Login_pa.add(channel_list);
@@ -130,11 +130,11 @@ public class LoginUi1 extends JFrame implements ActionListener,Serializable {
 				}
 			}
 			if(id_tf.getText()==null){
-				JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+				JOptionPane.showMessageDialog(null, "ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			}else if(channel_list.getSelectedItem()==null){
-				JOptionPane.showMessageDialog(null, "Ã¤³ÎÀ» ¼±ÅÃÇØÁÖ¼¼¿ä");
+				JOptionPane.showMessageDialog(null, "ì±„ë„ì„ ì„ íƒí•´ì£¼ì„¸ìš”");
 			}else if(!tf){
-				JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ´Â ¿µ¹® ¼Ò¹®ÀÚ¿Í ¼ıÀÚ¸¸ »ç¿ë °¡´ÉÇÕ´Ï´Ù");
+				JOptionPane.showMessageDialog(null, "ì•„ì´ë””ëŠ” ì˜ë¬¸ ì†Œë¬¸ìì™€ ìˆ«ìë§Œ ì‚¬ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤");
 				id_tf.setText("");
 			}else{
 				String nickMsg=id_tf.getText();
